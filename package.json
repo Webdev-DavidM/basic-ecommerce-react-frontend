@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-
+  "homepage": "http://Webdev-DavidM.github.io/basic-ecommerce-react-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
