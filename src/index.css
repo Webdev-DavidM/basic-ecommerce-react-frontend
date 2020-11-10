@@ -1,0 +1,53 @@
+.shop-container {
+  width: 80%;
+  background-color: aliceblue;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2% 0 0 0;
+}
+
+.shop-flex-container {
+  padding: 2% 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: aliceblue;
+  margin: auto;
+  text-align: center;
+}
+
+.flex-item img {
+  width: 60%;
+  height: auto;
+}
+
+.flex-item h2 {
+  height: 100px;
+}
+
+.flex-item {
+  width: 50%;
+  height: auto;
+}
+
+.flex-item img {
+  height: 250px;
+  width: auto;
+}
+
+.form {
+  width: 80%;
+  margin: auto;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.admin-form-container {
+  width: 80%;
+  margin: auto;
+}
