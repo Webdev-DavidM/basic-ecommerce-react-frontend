@@ -17,7 +17,10 @@ export default function ShopItems() {
         <div className="flex-item" key={item._id}>
           <h2>{item.name}</h2>
           <h3>£{item.price}</h3>
-          <img src={`http://localhost:5000/${item.image}`} alt="" />
+          <img
+            src={`https://my-basic-ecommerce-site.herokuapp.com/${item.image}`}
+            alt=""
+          />
           <p>{item.description}</p>
         </div>
       );
