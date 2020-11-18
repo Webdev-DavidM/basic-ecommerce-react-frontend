@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { userRegister } from '../reducers/userReducer';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { userRegister } from "../reducers/userReducer";
+import { withRouter } from "react-router-dom";
 
 function Register(props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     let result = await dispatch(userRegister({ email, password, name }));
 
-    if (result.type === 'users/userRegister/fulfilled') {
-      props.history.push('/');
+    if (result.type === "users/userRegister/fulfilled") {
+      props.history.push("/");
     }
   };
 
   const updateState = (e) => {
-    if (e.target.type === 'password') {
+    if (e.target.type === "password") {
       setPassword(e.target.value);
     }
-    if (e.target.type === 'email') {
+    if (e.target.type === "email") {
       setEmail(e.target.value);
     } else {
       setName(e.target.value);
@@ -33,6 +33,7 @@ function Register(props) {
 
   return (
     <div className="form">
+      <h3>Customer sign-up</h3>
       <Form
         onSubmit={(e) => {
           handleRegister(e);
@@ -65,10 +66,18 @@ function Register(props) {
             placeholder="Name"
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <div className="button-container">
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <Button
+            onClick={() => props.history.push("/")}
+            variant="danger"
+            type="submit"
+          >
+            Cancel
+          </Button>
+        </div>
       </Form>
     </div>
   );

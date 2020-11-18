@@ -1,16 +1,18 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 // Using a thunk to get the shop data
 const fetchItemsByType = createAsyncThunk(
-  'users/fetchItemsByTypeStatus',
+  "users/fetchItemsByTypeStatus",
   async (Itemtype, thunkAPI) => {
-    const response = await axios.get(`https://my-basic-ecommerce-site.herokuapp.com/shop/${Itemtype}`);
+    const response = await axios.get(
+      `https://my-basic-ecommerce-site.herokuapp.com/shop/${Itemtype}`
+    );
     return response.data;
   }
 );
 
 export const slice = createSlice({
-  name: 'shop',
+  name: "shop",
   initialState: {
     items: [],
   },
@@ -21,7 +23,7 @@ export const slice = createSlice({
       state.items = items;
     },
     [fetchItemsByType.rejected]: (state, action) => {
-      return state
+      return state;
     },
   },
 });

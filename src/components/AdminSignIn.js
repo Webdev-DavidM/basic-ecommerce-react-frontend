@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Form from 'react-bootstrap/Form';
-import { adminLogin } from '../reducers/userReducer';
-import Button from 'react-bootstrap/Button';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Form from "react-bootstrap/Form";
+import { adminLogin } from "../reducers/userReducer";
+import Button from "react-bootstrap/Button";
+import { withRouter } from "react-router-dom";
 
 function AdminSignIn(props) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     let result = await dispatch(adminLogin({ email, password }));
 
-    if (result.type === 'users/adminLogin/fulfilled') {
-      props.history.push('/admin');
+    if (result.type === "users/adminLogin/fulfilled") {
+      props.history.push("/admin");
     }
   };
 
   const updateState = (e) => {
-    if (e.target.type === 'password') {
+    if (e.target.type === "password") {
       setPassword(e.target.value);
     } else {
       setEmail(e.target.value);
@@ -32,6 +32,7 @@ function AdminSignIn(props) {
 
   return (
     <div className="form">
+      <h3>Administrator sign-in</h3>
       <Form
         onSubmit={(e) => {
           handleLogin(e);
@@ -57,10 +58,18 @@ function AdminSignIn(props) {
           />
           {loginSuccessful === false && <p>Log in unsuccessful</p>}
         </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <div className="button-container">
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <Button
+            onClick={() => props.history.push("/")}
+            variant="danger"
+            type="submit"
+          >
+            Cancel
+          </Button>
+        </div>
       </Form>
     </div>
   );

@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import Axios from 'axios';
-import { fetchItemsByType } from '../reducers/shopReducer';
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
+import Axios from "axios";
+import { fetchItemsByType } from "../reducers/shopReducer";
 
 const Admin = ({ history }) => {
-  const [category, setCategory] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+  const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const dispatch = useDispatch();
 
   const submitFormData = async () => {
@@ -19,17 +19,17 @@ const Admin = ({ history }) => {
 
     const formData = new FormData();
     // Note you have to append each key/value pair individually
-    formData.append('productImage', image);
-    formData.append('name', name);
-    formData.append('description', description);
-    formData.append('price', price);
+    formData.append("productImage", image);
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
 
     const config = {
       headers: {
-        'content-type': 'multipart/form-data',
+        "content-type": "multipart/form-data",
       },
     };
-    let res = await Axios.post('shop/create', formData, config);
+    let res = await Axios.post("shop/create", formData, config);
     if (res.status === 201) {
       history.push(`/`);
       dispatch(fetchItemsByType(category));
@@ -37,17 +37,17 @@ const Admin = ({ history }) => {
   };
 
   const setFormState = (e) => {
-    let type = e.target.getAttribute('id');
+    let type = e.target.getAttribute("id");
     switch (type) {
-      case 'category':
+      case "category":
         return setCategory(e.target.value);
-      case 'name':
+      case "name":
         return setName(e.target.value);
-      case 'price':
+      case "price":
         return setPrice(e.target.value);
-      case 'description':
+      case "description":
         return setDescription(e.target.value);
-      case 'image':
+      case "image":
         return setImage(e.target.files[0]);
       default:
         return;
@@ -92,9 +92,18 @@ const Admin = ({ history }) => {
           <Form.File label="Please upload a product photo" />
         </Form.Group>
       </Form>
-      <Button onClick={() => submitFormData()} variant="primary" type="submit">
-        Submit
-      </Button>
+      <div className="button-container">
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button
+          onClick={() => history.push("/")}
+          variant="danger"
+          type="submit"
+        >
+          Cancel
+        </Button>
+      </div>
     </div>
   );
 };

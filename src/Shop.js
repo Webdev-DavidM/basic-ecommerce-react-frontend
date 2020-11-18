@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import ShopNavbar from './components/ShopNavbar';
-import ShopItems from './components/ShopItems';
+import ShopNavbar from "./components/ShopNavbar";
+import ShopItems from "./components/ShopItems";
 export default function Shop() {
   // const shopItems = useSelector(shopList);
   // console.log(shopItems);

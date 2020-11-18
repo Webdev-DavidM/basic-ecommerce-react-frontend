@@ -11,15 +11,12 @@
   padding: 2% 0 0 0;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 800px;
   width: 80%;
   background-color: aliceblue;
   margin: auto;
   text-align: center;
-}
-
-.flex-item img {
-  width: 60%;
-  height: auto;
 }
 
 .flex-item h2 {
@@ -27,12 +24,13 @@
 }
 
 .flex-item {
-  width: 50%;
+  width: 100%;
   height: auto;
+  border: 1px solid black;
 }
 
 .flex-item img {
-  height: 250px;
+  height: 100px;
   width: auto;
 }
 
@@ -50,4 +48,46 @@
 .admin-form-container {
   width: 80%;
   margin: auto;
+}
+
+.cyclist {
+  max-width: 80%;
+  height: auto;
+  margin: auto;
+}
+
+.landing-page {
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 600px) {
+  .shop-flex-container {
+    padding: 2% 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    min-height: 800px;
+    width: 80%;
+    background-color: aliceblue;
+    margin: auto;
+    text-align: center;
+  }
+  .flex-item img {
+    width: 60%;
+    height: auto;
+  }
+  .flex-item {
+    width: 50%;
+    height: auto;
+    border: 1px solid black;
+  }
 }
