@@ -7,6 +7,7 @@ import AdminSignIn from "./components/AdminSignIn";
 import Register from "./components/Register";
 import Navbar from "./components/navBar";
 import Admin from "./components/Admin";
+import Cart from "./components/Cart";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       <Route exact path="/admin">
         {adminAuthenticated ? <Admin /> : <Redirect from="/admin" to="/" />}
       </Route>
+      <Route exact path="/cart" component={Cart} />
     </Router>
   );
 }

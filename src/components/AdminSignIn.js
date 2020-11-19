@@ -27,8 +27,7 @@ function AdminSignIn(props) {
     }
   };
 
-  let loginSuccessful = useSelector((state) => state.users.authenticated);
-  console.log(loginSuccessful);
+  let loginSuccessful = useSelector((state) => state.users.adminAuthenticated);
 
   return (
     <div className="form">

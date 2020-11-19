@@ -19,6 +19,7 @@ const Admin = ({ history }) => {
 
     const formData = new FormData();
     // Note you have to append each key/value pair individually
+    formData.append("category", category);
     formData.append("productImage", image);
     formData.append("name", name);
     formData.append("description", description);
@@ -29,7 +30,12 @@ const Admin = ({ history }) => {
         "content-type": "multipart/form-data",
       },
     };
-    let res = await Axios.post("shop/create", formData, config);
+    let res = await Axios.post(
+      "http://localhost:5000/shop/create",
+      formData,
+      config
+    );
+
     if (res.status === 201) {
       history.push(`/`);
       dispatch(fetchItemsByType(category));
@@ -59,7 +65,6 @@ const Admin = ({ history }) => {
       <h3>
         Please create the product below to add it to the website and database
       </h3>
-      {/* <img src="aac5be8cc2723b9ae78ab658b08871a6" alt="" /> */}
       <Form>
         <Form.Group controlId="category" onChange={(e) => setFormState(e)}>
           <Form.Label>Product category</Form.Label>
@@ -93,7 +98,11 @@ const Admin = ({ history }) => {
         </Form.Group>
       </Form>
       <div className="button-container">
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() => submitFormData()}
+        >
           Submit
         </Button>
         <Button

@@ -13,7 +13,6 @@ function Login(props) {
   const handleLogin = async (e) => {
     e.preventDefault();
     let result = await dispatch(userLogin({ email, password }));
-
     if (result.type === "users/userLogin/fulfilled") {
       props.history.push("/");
     }
@@ -27,7 +26,7 @@ function Login(props) {
     }
   };
 
-  let loginSuccessful = useSelector((state) => state.users.authenticated);
+  let loginSuccessful = useSelector((state) => state.users.loginErrors);
   console.log(loginSuccessful);
 
   return (
@@ -56,7 +55,7 @@ function Login(props) {
             onChange={(e) => updateState(e)}
             placeholder="Password"
           />
-          {loginSuccessful === false && <p>Log in unsuccessful</p>}
+          {loginSuccessful && <p>Log in unsuccessful</p>}
         </Form.Group>
         <div className="button-container">
           <Button variant="primary" type="submit">
