@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import Shop from "./Shop";
 import Login from "./components/Login";
 import AdminSignIn from "./components/AdminSignIn";
+import ModalSpinner from "./ModalSpinner";
 import Register from "./components/Register";
-import Navbar from "./components/navBar";
+import Navbar from "./components/NavBar";
 import Admin from "./components/Admin";
 import Cart from "./components/Cart";
+import Modal from "./ModalBox";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 function App() {
@@ -16,10 +18,16 @@ function App() {
   let adminAuthenticated = useSelector(
     (state) => state.users.adminAuthenticated
   );
+  let showModal = useSelector((state) => state.shop.showModal);
+  let showSpinner = useSelector((state) => state.shop.showSpinner);
+  let modal = showModal ? <Modal /> : null;
+  let spinner = showSpinner ? <ModalSpinner /> : null;
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div className="App">
+        {spinner}
+        {modal}
         <Navbar />
       </div>
       <Route exact path="/" component={Shop} />

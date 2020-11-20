@@ -7,7 +7,6 @@ Cart.propTypes = {};
 function Cart(props) {
   const cartItems = useSelector((state) => state.users.cart);
   let JSXitems = <h3>Nothing in cart</h3>;
-  console.log(cartItems);
   if (cartItems.length > 0) {
     JSXitems = cartItems.map((item) => {
       return (

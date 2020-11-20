@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import cyclist from "../cycle.jpg";
 import Button from "react-bootstrap/Button";
 import { addToCart } from "../reducers/userReducer";
+import { showSpinner } from "../reducers/shopReducer";
 
 export default function ShopItems() {
   const Items = useSelector((state) => state.shop.items);
   const dispatch = useDispatch();
 
   const addItemToCart = async (id, name, price) => {
+    await dispatch(showSpinner(true));
     await dispatch(addToCart({ id, name, price }));
+    await dispatch(showSpinner(false));
   };
 
   let itemsJSX = (

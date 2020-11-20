@@ -15,8 +15,18 @@ export const slice = createSlice({
   name: "shop",
   initialState: {
     items: [],
+    showModal: true,
+    showSpinner: false,
   },
-  reducers: {},
+  reducers: {
+    showModal: (state, action) => {
+      state.showModal = false;
+    },
+    showSpinner: (state, action) => {
+      state.showModal = false;
+      state.showSpinner = action.payload;
+    },
+  },
   extraReducers: {
     [fetchItemsByType.fulfilled]: (state, action) => {
       const items = action.payload;
@@ -27,6 +37,8 @@ export const slice = createSlice({
     },
   },
 });
+
+export const { showSpinner, showModal } = slice.actions;
 
 export { fetchItemsByType };
 

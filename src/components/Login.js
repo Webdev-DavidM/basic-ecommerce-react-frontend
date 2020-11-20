@@ -27,7 +27,6 @@ function Login(props) {
   };
 
   let loginSuccessful = useSelector((state) => state.users.loginErrors);
-  console.log(loginSuccessful);
 
   return (
     <div className="form">

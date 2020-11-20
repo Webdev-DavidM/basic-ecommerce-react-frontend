@@ -91,6 +91,27 @@
   font-size: 1rem;
 }
 
+.modal {
+  position: absolute;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(57, 53, 53, 0.9);
+  display: flex;
+  color: white;
+  align-items: center;
+}
+
+.modal-spinner {
+  position: absolute;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+
 .cart-flex-container {
   display: flex;
   flex-direction: column;
