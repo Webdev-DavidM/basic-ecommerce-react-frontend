@@ -31,7 +31,7 @@ const Admin = ({ history }) => {
       },
     };
     let res = await Axios.post(
-      "http://localhost:5000/shop/create",
+      "https://my-basic-ecommerce-site.herokuapp.com/shop/create",
       formData,
       config
     );
